@@ -17,32 +17,32 @@ typedef uint_32     unsigned int;
  */
 typedef union _Mov_Format_First {
     struct {
-        uchar_8     opsize : 1;
-        uchar_8     opflag : 1;
-        uchar_8     opcode : 6;
+        uchar_8     opsize  : 1;
+        uchar_8     opflag  : 1;
+        uchar_8     opcode  : 6;
     } Mov_RM_TF_R;
     struct {
-        uchar_8     opsize : 1;
-        uchar_8     opcode : 7;
+        uchar_8     opsize  : 1;
+        uchar_8     opcode  : 7;
     } Mov_I_T_RM;
     struct {
-        uchar_8     reg    : 3;
-        uchar_8     opflag : 1;
-        uchar_8     opcode : 4;
+        uchar_8     opgreg  : 3;
+        uchar_8     opflag  : 1;
+        uchar_8     opcode  : 4;
     } Mov_I_T_R;
     struct {
-        uchar_8     opsize : 1;
-        uchar_8     opcode : 7;
+        uchar_8     opsize  : 1;
+        uchar_8     opcode  : 7;
     } Mov_M_T_A;
     struct {        
-        uchar_8     opsize : 1;
-        uchar_8     opcode : 7;
+        uchar_8     opsize  : 1;
+        uchar_8     opcode  : 7;
     } Mov_A_T_M;
     struct {
-        uchar_8     opcode : 8;
+        uchar_8     opcode  : 8;
     } Mov_RM_T_S;
     struct {
-        uchar_8     opcode : 8;
+        uchar_8     opcode  : 8;
     } Mov_S_T_RM;
 } Mov_Format_First;
 
@@ -60,9 +60,23 @@ typedef union _Mov_Format_First {
 *                  PUSH INSTRUCTION
 ************************************************************/
 
-typedef union _Pop_Format_First {
+typedef union _Push_Format_First {
     struct {
-        uchar_8 opcode : 8;
-    }Pop_RM;
-}
+        uchar_8     opcode  : 8;
+    } Push_RM;
+    struct {
+        uchar_8     opgreg  : 3;
+        uchar_8     opcode  : 5;
+    } Push_R;
+    struct {
+        uchar_8     opcode_p1   : 3;
+        uchar_8     opsreg      : 2;
+        uchar_8     opcode_p2   : 3;
+    } Push_S;
+} Push_Format_First;
+
+#define PUSH_RM_OP     (0xff)
+#define PUSH_R_OP      (0x0a)
+#define Push_S_OP1     (0x06)
+#define Push_S_OP2     (0x00)
 #endif	// isatype.h
