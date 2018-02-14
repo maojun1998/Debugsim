@@ -2,3 +2,9 @@ Debugsim Project
 ================
 
 * This a Project for debug running on x86 x64 modern Cpu.
+
+Build
+=====
+
+* On Winodw :   run the make_vc.cmd
+* On linus  :   run the make_gcc.sh
