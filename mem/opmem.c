@@ -1,8 +1,7 @@
 #include "memtype.h"
-#include "opmem.h"
 
 
-static Mem mem;
+Mem mem;	// global var for opreate.
 
 void rdbt(U_SHORT segaddr, U_SHORT offaddr, U_CHAR *pointer)
 {

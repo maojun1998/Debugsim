@@ -8,7 +8,6 @@
 
 
 
-set INCLUDE=../include;%INCLUDE%
 set CCFLAG=/c /O2
 set CC=cl
 set LD=link
