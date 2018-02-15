@@ -79,4 +79,26 @@ typedef union _Push_Format_First {
 #define PUSH_R_OP      (0x0a)
 #define Push_S_OP1     (0x06)
 #define Push_S_OP2     (0x00)
+
+
+/***********************************************************
+*                  POP INSTRUCTION
+************************************************************/
+typedef union _Pop_Format_First {
+    struct {
+        uchar_8     opcode  : 8;
+    } Pop_RM;
+    struct {
+        uchar_8     opgrep  : 3;
+        uchar_8     opcode  : 5;
+    } Pop_R;
+    struct {
+        uchar_8     opcode_p1   : 3;
+        uchar_8     opsreg      : 2;
+        uchar_8     opcode_p2   : 3;
+    } Pop_S;
+}
+
+
+
 #endif	// isatype.h

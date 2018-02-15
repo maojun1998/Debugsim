@@ -10,13 +10,15 @@ char *copyright = "\nThis program was writen by Bobi and Hacking.\n\
 Any problem or wana to report bug please sent Email to 1932197667@qq.com.\n\
 The program obe the GPL-V3, You can use the source code any time.\n\n";
 
-char *useage = "\n\t--version\t\tShow the version.\n\
-\t-g       \t\t-g for to run the debug.\n\
-\t--help   \t\t--help use.\n";
+char *useage = "\n\t--version\t\tShow the version.\n"
+				"\t-g       \t\t-g for to run the debug.\n"
+				"\t--help   \t\t--help use.\n"
+				"\t -m      \t\t-m xxx.file load the file into the memmory.\n";
 
 static char 	buffer[BUFFER_SIZE];		// bufferr for kerboad input.
 extern Regrp 	regrp;						// referece pointer for generation register grup.
 
+void load_in_memmory(char * fname);
 
 int main(int argc, char *argv[])
 {
