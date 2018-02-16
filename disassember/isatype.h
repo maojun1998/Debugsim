@@ -15,6 +15,7 @@ typedef uint_32     unsigned int;
  *  The naming convert. Mov_RM_TF_R is mean that Move
  *  Instruction register or memmory  from or to register.
  */
+
 typedef union _Mov_Format_First {
     struct {
         uchar_8     opsize  : 1;
