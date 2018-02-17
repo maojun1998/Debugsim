@@ -4,7 +4,7 @@
 typedef unsigned char uchar;
 typedef unsigned int  uint;
 
-// Type One Instruction
+// Type One Instruction.
 typedef union _ISA_TYPE_1 {
 	uchar opsize : 1;
 	uchar opflag : 1;
@@ -42,7 +42,7 @@ typedef union _ISA_TYPE_2 {
 	uchar opcode : 7;
 } ISA_TYPE_2;
 
-// This ISA_TYPE_1 Instruction Opcode Const Var.
+// This ISA_TYPE_2 Instruction Opcode Const Var.
 #define MOV_I_T_RM		(0x63)
 #define MOV_M_T_A		(0x50)
 #define MOV_A_T_M		(0x51)
@@ -92,6 +92,8 @@ typedef union _ISA_TYPE_3 {
 	uchar opcode : 4;
 } ISA_TYPE_3;
 
+// This ISA_TYPE_2 Instruction Opcode Const Var.
+#define MOV_I_T_R		(0x0b)
 
 
 
@@ -99,7 +101,30 @@ typedef union _ISA_TYPE_3 {
 typedef union _ISA_TYPE_4 {
 	uchar opsize : 8;
 } ISA_TYPE_4;
-
+#define MOV_RM_T_S		(0x8e)
+#define MOV_S_T_RM		(0x8c)
+#define PUSH_RM			(0xff)
+#define POP_RM			(0x8f)
+#define XLAT			(0xd7)
+#define LEA				(0x8d)
+#define LDS				(0xc5)
+#define LES				(0xc4)
+#define LAHF			(0x9f)
+#define SAHF			(0x9e)
+#define PUSHF			(0x9c)
+#define POPF			(0x9d)
+#define AAA				(0x37)
+#define BBA				(0x27)
+#define AAS				(0x3f)
+#define DAS				(0x2f)
+#define AAM				(0xd4)
+#define AAD				(0xd5)
+#define CBW				(0x98)
+#define CWD				(0x99)
+#define CALL_D_W_S		(0xe8)
+#define CALL_IS			(0xff)
+#define CALL_DI			(0x9a)
+#define CALL_II			(0xff)
 
 
 
