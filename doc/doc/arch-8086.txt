@@ -5,7 +5,7 @@ Content
 ===========
 1. 8086 Architecture Overflow.
 2. 8086 Register Instrocdution.
-3. 8086 Io Ports and Io Memory.
+3. 8086 IO Ports and IO Memory.
 4. 8086 Instrution and Program.
 
 
@@ -13,6 +13,6 @@ Architecture Overflow.
 ======================
     8086 has 12 generation register, such as : AX, BX, CX, DX, AH, AL, BH, BL, CH, CL, DH, DL.
     And has 4 segement register, such as : DS, CS, ES, SS. 2 index register such as : SI, DI.
-    3 pointer regsiter such as : IP, BP, SP. 1 
+    3 pointer regsiter such as : IP, BP, SP. 
 
 

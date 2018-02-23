@@ -18,10 +18,10 @@ char *useage = "\n\t--version\t\tShow the version.\n"
 				"\t--help   \t\t--help use.\n"
 				"\t -m      \t\t-m xxx.file load the file into the memmory.\n";
 
-static char 	buffer[BUFFER_SIZE];		// bufferr for kerboad input.
-extern Regrp 	regrp;						// referece pointer for generation register grup.
+static char 	buffer[BUFFER_SIZE];				// bufferr for kerboad input.
+extern Regrp 	regrp;								// referece pointer for generation register grup.
 
-void load_into_memmory(char * fname);		// load the mem dump in to memmory.
+static void load_into_memmory(char * fname);		// load the mem dump in to memmory.
 
 int main(int argc, char *argv[])
 {
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-void load_into_memmory(char * fname)
+static void load_into_memmory(char * fname)
 {
 	FILE *fp;
 	extern Mem mem;
@@ -76,7 +76,7 @@ void load_into_memmory(char * fname)
 	if ((fp = fopen(fname,"r")) != NULL) {
 		fread((char *)&mem.mem[0], 1, MEM_SIZE * MEM_SIZE);
 	} else {
-		printf("Error : %s." strerror(errno));
+		printf("Error : %s.", strerror(errno));
 		exit(-1);
 	}
 

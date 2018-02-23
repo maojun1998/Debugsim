@@ -149,4 +149,4 @@ typedef union _ISA_TYPE_6 {
 
 
 
-#endif	// isadate.h
+#endif	// isadata.h

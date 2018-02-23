@@ -2,7 +2,7 @@
 #define __DISASSEMBER_H__
 
 
-
+unsigned int  decoder(char *addr, char *asm_buffer);
 
 
 
