@@ -3,7 +3,7 @@
 #include <errno.h>
 
 #include "opreg.h" 		// Init_Reg.
-#include "cmdtrans.h"	// cmdtrans.
+#include "cmdtrans.h"		// cmdtrans.
 #include "opmem.h"		// Write_Byte_Mem.
 
 
@@ -37,18 +37,18 @@ int main(int argc, char *argv[])
 		return 0;
 	} else if (argc == 2) {
 
-			if (!strcmp(argv[1], "--version")) {
-				printf("%s", copyright);
-				return 0;
-			} else if (!strcmp(argv[1], "-g")) {
-				;
-			} else if (!strcmp(argv[1], "--help")) {
-				printf("%s", useage);
-				return 0;
-			} else {
-				printf("\n-Use error.\n");
-				return 0;
-			}
+		if (!strcmp(argv[1], "--version")) {
+			printf("%s", copyright);
+			return 0;
+		} else if (!strcmp(argv[1], "-g")) {
+			;
+		} else if (!strcmp(argv[1], "--help")) {
+			printf("%s", useage);
+			return 0;
+		} else {
+			printf("\n-Use error.\n");
+			return 0;
+		}
 
 	} else if (argc == 3 && !strcmp("-m", argv[1])) {
 		load_into_memmory(argv[2]);

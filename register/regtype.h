@@ -37,7 +37,7 @@
  */
  
 #define FLAG_STATUS_SET		1
-#define FLAG_STATUS_CLS 	0
+#define FLAG_STATUS_CLS 		0
 
 
 

@@ -12,7 +12,13 @@ Content
 Architecture Overflow.
 ======================
     8086 has 12 generation register, such as : AX, BX, CX, DX, AH, AL, BH, BL, CH, CL, DH, DL.
-    And has 4 segement register, such as : DS, CS, ES, SS. 2 index register such as : SI, DI.
-    3 pointer regsiter such as : IP, BP, SP. 
+And has 4 segement register, such as : DS, CS, ES, SS. 2 index register such as : SI, DI. 3 
+pointer regsiter such as : IP, BP, SP. 8086 has a divide io mem for IO Deveice. The named io 
+ports, 8086 have 1024 io ports for io device each one bytes. There are 2^16 = 65535 ports and 
+each has one bytes. And one word such two bytes as for 16 bits ports. In the 8086 system, it's 
+also user io map ways to oprate io ports which map the ioports address to memmory address, so
+oprate the memmory like use the ioports.
+	In the 8086 system, the effect address user the one WORD segement address and offect address
+to address the memmory, the EA(effect address) = SEG << 4 + OFFECT.
 
 
