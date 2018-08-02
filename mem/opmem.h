@@ -61,4 +61,5 @@ void wtwd(U_SHORT segaddr, U_SHORT offaddr, U_SHORT *pointer);
 
 void wtdw(U_SHORT segaddr, U_SHORT offaddr, U_INT *pointer);
 
+
 #endif //opmem.h

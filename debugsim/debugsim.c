@@ -3,23 +3,23 @@
 #include <errno.h>
 
 #include "opreg.h" 		// Init_Reg.
-#include "cmdtrans.h"		// cmdtrans.
+#include "cmdtrans.h"   // cmdtrans.
 #include "opmem.h"		// Write_Byte_Mem.
-
+#include "debug.h"      // Init_debug, Release_debug.
 
 #define BUFFER_SIZE 	200
 
-char *copyright = "\nThis program was writen by Bobi and Hacking.\n\
-Any problem or wana to report bug please sent Email to 1932197667@qq.com.\n\
-The program obe the GPL-V3, You can use the source code any time.\n\n";
+char *copyright = "\nThis program was writen by Bobi and Hacking.\n"
+"Any problem or wana to report bug please sent Email to 1932197667@qq.com.\n"
+"The program obe the GPL-V3, You can use the source code any time.\n\n";
 
-char *useage = "\n\t--version\t\tShow the version.\n"
+char *useage =  "\n\t--version\t\tShow the version.\n"
 				"\t-g       \t\t-g for to run the debug.\n"
 				"\t--help   \t\t--help use.\n"
 				"\t -m      \t\t-m xxx.file load the file into the memmory.\n";
 
 static char 	buffer[BUFFER_SIZE];				// bufferr for kerboad input.
-extern Regrp 	regrp;								// referece pointer for generation register grup.
+
 
 static void load_into_memmory(char * fname);		// load the mem dump in to memmory.
 
@@ -27,11 +27,16 @@ int main(int argc, char *argv[])
 {
 	
 	
-	/*
-	 *	Init the register, make them all to be 0.
-	 */
-	Init_Reg(&regrp);
-
+    //
+    // Init the register, make them all to be 0.
+    // 
+	Init_Reg();
+    
+    // 
+    // Init debug system.
+    //
+    Init_Debug();
+    
 	if (argc < 2) {
 		printf("%s", useage);
 		return 0;
@@ -64,7 +69,10 @@ int main(int argc, char *argv[])
 		cmdtrans(buffer);
 	} while (strcmp(buffer, "q") != 0 &&
 				strcmp(buffer, "Q") != 0);
-	
+    //
+    // Relase the debug system.
+    //
+	Release_Debug();
 	return 0;
 }
 
@@ -76,8 +84,8 @@ static void load_into_memmory(char * fname)
 	if ((fp = fopen(fname,"r")) != NULL) {
 		fread((char *)&mem.mem[0], 1, MEM_SIZE * MEM_SIZE);
 	} else {
-		printf("Error : %s.", strerror(errno));
+		printf("Open False because : %s.", strerror(errno));
 		exit(-1);
 	}
-
+    
 }

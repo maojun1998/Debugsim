@@ -2,7 +2,7 @@
 							=====================
 
 
-##mode: Disammeber##
+##mode: Assammeber##
 =====================
 *Author: Bobi
 *Email :

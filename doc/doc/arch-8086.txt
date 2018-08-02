@@ -6,7 +6,7 @@ Content
 1. 8086 Architecture Overflow.
 2. 8086 Register Instrocdution.
 3. 8086 IO Ports and IO Memory.
-4. 8086 Instrution and Program.
+4. 8086 Instruction and Program.
 
 
 Architecture Overflow.
@@ -18,7 +18,7 @@ ports, 8086 have 1024 io ports for io device each one bytes. There are 2^16 = 65
 each has one bytes. And one word such two bytes as for 16 bits ports. In the 8086 system, it's 
 also user io map ways to oprate io ports which map the ioports address to memmory address, so
 oprate the memmory like use the ioports.
-	In the 8086 system, the effect address user the one WORD segement address and offect address
+    In the 8086 system, the effect address use the one WORD segement address and offect address
 to address the memmory, the EA(effect address) = SEG << 4 + OFFECT.
 
 

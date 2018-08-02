@@ -39,7 +39,18 @@
 #define FLAG_STATUS_SET		1
 #define FLAG_STATUS_CLS 		0
 
+/*
+ *      Define the Half REG CONST.
+ */
+ 
+ 
+#define REG_HF_FILED    (0xFF00)
+#define REG_LF_FILED    (0x00FF)
 
+
+/*
+ *      Basic type for register modules.
+ */
 
 typedef char  			EX_STAUS;
 typedef short 			REG_TYPE;

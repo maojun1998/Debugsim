@@ -36,25 +36,25 @@
 5.The design of debugsim.
 =========================
 
-	
-													+------------------+
-													|			Debugsim		 |
-													+------------------+
-																		|
-													+------------------+				 +-----------------+
-													| Command Transter |-------->|	ISA Simulator  |
-													+------------------+				 +-----------------+				
-																		|																		 |
-					+-----+--+---------+--+-------+--+--------+--+----------+			 |
-					| Mem |  |Register |	|IO port|	 |Assember|	 |Dissemeber|			 |
-					+-----+--+---------+--+-------+--+--------+--+----------+			 |
-						 |					|						|																		 |
-						 +<---------+<----------+<-----------------------------------+
+
+								+------------------+
+								|	 Debugsim      |
+								+------------------+
+										 |
+								+------------------+		 +-----------------+
+								| Command Transter |-------->|	ISA Simulator  |
+								+------------------+		 +-----------------+
+										 |									   |
+			   +-----+--+---------+--+-------+--+--------+--+----------+	   |
+			   | Mem |  |Register |	 |IO Port|  |Assember|  |Dissemeber|	   |
+			   +-----+--+---------+--+-------+--+--------+--+----------+	   |
+                  |          |           |                                     |
+                  +<---------+<----------+<------------------------------------+
 				  
 				  
 6.Devolper must know.
 =====================
-* We should use the old C89 standard, because we must the MSVC++ 6.0 must compiler it.
+* We should use the old C89 standard, because we must keep the MSVC++ 6.0 must compiler it.
   We must make sure that this project can be compilered by C89 C compiler.
   
 * How To build this project ?

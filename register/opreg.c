@@ -12,20 +12,28 @@ static const char 	*ushort_to_hex(unsigned short reg_no);
 static const char 	*ushort_to_bin(unsigned short reg_no);
 static EX_STAUS 	show_psw_sig(unsigned short reg_no);
 
-/* regrp define, we define the for here, other will extern refernece. */
+static Regrp x86RisgerGroup;
 
-Regrp regrp;
+static Regrp *regrp = &x86RisgerGroup;
 
-EX_STAUS Init_Reg(Regrp *regrp)
+EX_STAUS Init_Reg(void)
 {
 	int i;
+    
+    REG_TYPE reg_cs;
+    
+    //
+    // When 8086 cpu boot, the init cs = 0xffff, ip = 0x0000.
+    //
+    reg_cs = 0xffff;
 	for (i = 0; i < sizeof(Regrp); i++) {
 		*((char *)regrp + i) = 0;
 	}
+    SetCs(&reg_cs);
 	return 0;
 }
 
-EX_STAUS Show_Reg(Regrp *regrp)
+EX_STAUS Show_Reg(void)
 {
 
 	printf("AX=");
@@ -101,7 +109,7 @@ EX_STAUS Show_Reg(Regrp *regrp)
 	
 }
 
-EX_STAUS Read_Reg(Regrp *regrp, char regname[], REG_TYPE *buffer)
+static EX_STAUS Read_Reg(char regname[], REG_TYPE *buffer)
 {
 	if (!(strcmp("AL", regname))) {
 		*buffer = regrp->gergrp.ax.low_high_reg.AL;
@@ -196,7 +204,7 @@ EX_STAUS Read_Reg(Regrp *regrp, char regname[], REG_TYPE *buffer)
 	return 0;
 }
 
-EX_STAUS Write_Reg(Regrp *regrp, char *regname, REG_TYPE *buffer)
+static EX_STAUS Write_Reg(char *regname, REG_TYPE *buffer)
 {
 	if (!(strcmp("AL", regname))) {
 		regrp->gergrp.ax.low_high_reg.AL = *buffer;
@@ -317,3 +325,352 @@ static EX_STAUS show_psw_sig(unsigned short reg_no)
 	
 	return 0;
 }
+
+void Set_CF(void)
+{
+	
+	regrp->flrgrp.PSW |= (1 << CF_SHR);
+	
+}
+
+void Cls_CF(void)
+{
+	
+	regrp->flrgrp.PSW &= ((U_REG_TYPE)(0xffff) ^ (U_REG_TYPE)((1 << CF_SHR)));
+	
+}
+
+void Set_PF(void)
+{
+	
+	regrp->flrgrp.PSW |= (1 << PF_SHR);
+	
+}
+
+void Cls_PF(void)
+{
+	
+	regrp->flrgrp.PSW &= ((U_REG_TYPE)(0xffff) ^ (U_REG_TYPE)((1 << PF_SHR)));
+	
+}
+
+void Set_AF(void)
+{
+	
+	regrp->flrgrp.PSW |= (1 << AF_SHR);
+	
+}
+
+void Cls_AF(void)
+{
+	
+	regrp->flrgrp.PSW &= ((U_REG_TYPE)(0xffff) ^ (U_REG_TYPE)((1 << AF_SHR)));
+	
+}
+
+void Set_ZF(void)
+{
+	regrp->flrgrp.PSW |= (1 << ZF_SHR);
+	
+}
+
+void Cls_ZF(void)
+{
+	
+	regrp->flrgrp.PSW &= ((U_REG_TYPE)(0xffff) ^ (U_REG_TYPE)((1 << ZF_SHR)));
+	
+}
+
+void Set_SF(void)
+{
+	
+	regrp->flrgrp.PSW |= (1 << SF_SHR);
+	
+}
+
+void Cls_SF(void)
+{
+	
+	regrp->flrgrp.PSW &= ((U_REG_TYPE)(0xffff) ^ (U_REG_TYPE)((1 << SF_SHR)));
+	
+}
+
+
+void Set_TF(void)
+{
+	
+	regrp->flrgrp.PSW |= (1 << TF_SHR);
+	
+}
+
+void Cls_TF(void)
+{
+	regrp->flrgrp.PSW &= ((U_REG_TYPE)(0xffff) ^ (U_REG_TYPE)((1 << TF_SHR)));
+	
+}
+
+void Set_IF(void)
+{
+	
+	regrp->flrgrp.PSW |= (1 << IF_SHR);
+	
+}
+
+void Cls_IF(void)
+{
+	
+	regrp->flrgrp.PSW &= ((U_REG_TYPE)(0xffff) ^ (U_REG_TYPE)((1 << IF_SHR)));
+	
+}
+
+void Set_DF(void)
+{
+	
+	regrp->flrgrp.PSW |= (1 << DF_SHR);
+	
+}
+
+void Cls_DF(void)
+{
+	regrp->flrgrp.PSW &= ((U_REG_TYPE)(0xffff) ^ (U_REG_TYPE)((1 << DF_SHR)));
+	
+}
+
+void Set_OF(void)
+{
+	
+	regrp->flrgrp.PSW |= (1 << OF_SHR);
+	
+}
+
+void Cls_OF(void)
+{
+	
+	regrp->flrgrp.PSW &= ((U_REG_TYPE)(0xffff) ^ (U_REG_TYPE)((1 << OF_SHR)));
+	
+}
+
+
+
+void SetAx(REG_TYPE *reg)
+{
+	Write_Reg("AX", reg);
+	
+}
+
+void GetAx(REG_TYPE *reg)
+{
+	Read_Reg("AX", reg);
+}
+void SetBx(REG_TYPE *reg)
+{
+	Write_Reg("BX", reg);
+}
+
+void GetBx(REG_TYPE *reg)
+{
+	Read_Reg("BX", reg);
+	
+}
+void SetCx(REG_TYPE *reg)
+{
+	Write_Reg("CX", reg);
+	
+}
+
+void GetCx(REG_TYPE *reg)
+{
+	Read_Reg("CX", reg);
+	
+}
+
+void SetDx(REG_TYPE *reg)
+{
+	Write_Reg("DX", reg);
+	
+}
+void GetDx(REG_TYPE *reg)
+{
+	Read_Reg("DX", reg);
+	
+}
+void SetDs(REG_TYPE *reg)
+{
+    Write_Reg("DS", reg);
+    
+}
+void GetDs(REG_TYPE *reg)
+{
+    Read_Reg("DS", reg);
+    
+}
+void SetEs(REG_TYPE *reg)
+{
+    Write_Reg("ES", reg);
+    
+}
+void GetEs(REG_TYPE *reg)
+{
+    Read_Reg("ES", reg);
+    
+}
+void SetCs(REG_TYPE *reg)
+{
+    Write_Reg("CS", reg);
+    
+}
+void GetCs(REG_TYPE *reg)
+{
+    Read_Reg("CS", reg);
+    
+}
+void SetSs(REG_TYPE *reg)
+{
+    Write_Reg("SS", reg);
+    
+}
+void GetSs(REG_TYPE *reg)
+{
+    Read_Reg("SS", reg);
+    
+}
+void SetSi(REG_TYPE *reg)
+{
+    Write_Reg("SI", reg);
+    
+}
+void GetSi(REG_TYPE *reg)
+{
+    Read_Reg("SI", reg);
+    
+}
+void SetDi(REG_TYPE *reg)
+{
+    Write_Reg("DI", reg);
+}
+void GetDi(REG_TYPE *reg)
+{
+    Read_Reg("DI", reg);
+    
+}
+void SetSp(REG_TYPE *reg)
+{
+    Write_Reg("SP", reg);
+    
+}
+void GetSp(REG_TYPE *reg)
+{
+    Write_Reg("SP", reg);
+    
+}
+void SetBp(REG_TYPE *reg)
+{
+    Write_Reg("BP", reg);
+    
+}
+void GetBp(REG_TYPE *reg)
+{
+    Read_Reg("BP", reg);
+    
+}
+void SetIp(REG_TYPE *reg)
+{
+    Write_Reg("IP", reg);
+    
+}
+void GetIp(REG_TYPE *reg)
+{
+    Read_Reg("IP", reg);
+    
+}
+
+
+
+
+
+
+
+
+
+void SetAh(REG_TYPE *reg)
+{
+    
+    Write_Reg("AH", reg);
+    
+}
+void GetAh(REG_TYPE *reg)
+{
+    
+    Read_Reg("AH", reg);
+    
+    
+}
+void SetAl(REG_TYPE *reg)
+{
+    Write_Reg("AL", reg);
+    
+}
+void GetAl(REG_TYPE *reg)
+{
+    Read_Reg("AL", reg);
+    
+}
+void SetBh(REG_TYPE *reg)
+{
+    Write_Reg("BH", reg);
+    
+}
+void GetBh(REG_TYPE *reg)
+{
+    Read_Reg("BH", reg);
+    
+}
+void SetBl(REG_TYPE *reg)
+{
+    Write_Reg("BL", reg);
+    
+}
+void GetBl(REG_TYPE *reg)
+{
+    Read_Reg("BL", reg);
+    
+}
+void SetCh(REG_TYPE *reg)
+{
+    Write_Reg("CH", reg);
+  
+}
+void GetCh(REG_TYPE *reg)
+{
+    Read_Reg("CH", reg);    
+}
+void SetCl(REG_TYPE *reg)
+{
+    Write_Reg("CL", reg);
+}
+void GetCl(REG_TYPE *reg)
+{
+    Read_Reg("CL", reg);
+    
+}
+void SetDh(REG_TYPE *reg)
+{
+    Write_Reg("DH", reg);
+    
+}
+void GetDh(REG_TYPE *reg)
+{
+    Read_Reg("DH", reg);
+    
+}
+void SetDl(REG_TYPE *reg)
+{
+    Write_Reg("DL", reg);
+    
+}
+void GetDl(REG_TYPE *reg)
+{
+    Read_Reg("DL", reg);
+    
+}
+

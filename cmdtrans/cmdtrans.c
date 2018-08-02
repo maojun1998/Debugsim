@@ -21,7 +21,7 @@ void cmdtrans(char *buffer)
 	len = strlen(buffer);
 	counter = 0;
 
-	// Sklep the space in the buffer.
+	// Skep the space in the buffer.
 	while (buffer[counter] == BLANK &&
 			counter < len) {
 		counter++;

@@ -2,6 +2,7 @@ Debugsim Project
 ================
 
 * This a Project for debug running on x86 and x64 modern CPU.
+  It's debug which running on the DOS .
 
 Build
 ======
