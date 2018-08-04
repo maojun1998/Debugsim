@@ -8,6 +8,8 @@
 
 #include "memtype.h"
 
+
+#define 
 /*
  *  This is Macro function for easy to understand.
  */
@@ -60,6 +62,18 @@ void wtbt(U_SHORT segaddr, U_SHORT offaddr, U_CHAR *pointer);
 void wtwd(U_SHORT segaddr, U_SHORT offaddr, U_SHORT *pointer);
 
 void wtdw(U_SHORT segaddr, U_SHORT offaddr, U_INT *pointer);
+
+char getByte(unsigned int address);
+
+
+#define TransAddrToInt(pAddr)           ((U_INT)(TWENTY_AND_NO & ((U_INT)(pAddr->segaddr << SEG_L_SHIF) + pAddr->offaddr))
+
+#define TransIntToAddr(pAddr, Number)                                       \
+                        do {                                                \
+                            Number &= TWENTY_AND_NO;                        \
+                            pAddr->offaddr = Number & 0x0000000f;           \
+                            pAddr->segaddr = (Number >> 4);                 \
+                        } while(0)
 
 
 #endif //opmem.h

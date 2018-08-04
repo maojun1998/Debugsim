@@ -10,7 +10,7 @@ static char rfgchr[17];
 
 static const char 	*ushort_to_hex(unsigned short reg_no);
 static const char 	*ushort_to_bin(unsigned short reg_no);
-static EX_STAUS 	show_psw_sig(unsigned short reg_no);
+static STAUS 	    show_psw_sig(unsigned short reg_no);
 
 static Regrp x86RisgerGroup;
 

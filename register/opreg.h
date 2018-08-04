@@ -12,13 +12,13 @@
 
 
 
-EX_STAUS Init_Reg(Regrp *regrp);
+STAUS Init_Reg(Regrp *regrp);
 
-EX_STAUS Show_Reg(Regrp *regrp);
+STAUS Show_Reg(Regrp *regrp);
 
-static EX_STAUS Read_Reg(Regrp *regrp, char regname[], REG_TYPE *buffer);
+static STAUS Read_Reg(Regrp *regrp, char regname[], REG_TYPE *buffer);
 
-static EX_STAUS Write_Reg(Regrp *regrp, char regname[], REG_TYPE *buffer);
+static STAUS Write_Reg(Regrp *regrp, char regname[], REG_TYPE *buffer);
 
 /*
  *	PSW -- Processor Status World. This PSW graph. 

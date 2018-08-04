@@ -49,8 +49,18 @@
 #define	REG_DH				(0x06)
 #define	REG_BH				(0x07)
 
+
 //
-// Segment regsiter.
+// Segment.
+//
+#define SREG_ES             (0x00)
+#define SREG_CS             (0x01)
+#define SREG_SS             (0x10)
+#define SREG_DS             (0x11)
+
+
+//
+// Segment regsiter Prefix.
 //
 
 #define	REG_SG_ES_PREFIX	(0x26)
@@ -62,11 +72,17 @@
 //  Lock Bus Prefix, and REP Prefix.
 //  
 
-#define LOCK_PRFIX          (0x78)
-#define REP_PREFIX          (0xf2)
-#define REPZ_PRFIX          (0xf2)
-#define REPNZ_PRFIX         (0xf3)
+#define LOCK_PRFIX          (0xf0)
+#define REP_PREFIX          (0xf3)
+#define REPZ_PRFIX          (0xf3)
+#define REPNZ_PRFIX         (0xf2)
 
+
+
+// 
+//  sysblos.
+//
+#define OP_MOV_RM_TF_REG    (0x22)
 
 
 

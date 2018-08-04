@@ -52,7 +52,7 @@
  *      Basic type for register modules.
  */
 
-typedef char  			EX_STAUS;
+typedef char  			STAUS;
 typedef short 			REG_TYPE;
 typedef char  			HALF_REG_TYPE;
 

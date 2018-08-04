@@ -66,3 +66,12 @@ void wtdw(U_SHORT segaddr, U_SHORT offaddr, U_INT *pointer)
 	
 	*(DWORD *)&mem.mem[eff_addr] = *pointer;
 }
+
+char getByte(unsigned int address) 
+{
+    if (address > 0xfffff) {
+        address &= TWENTY_AND_NO;
+    }
+    
+    return mem.mem[address];
+}
